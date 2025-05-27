@@ -1,0 +1,17 @@
+import java.lang.reflect.*;
+
+public class ReflectionExample_39 {
+    public static void main(String[] args) throws Exception {
+        Class<?> clazz = Class.forName("MyClass");
+        Method[] methods = clazz.getDeclaredMethods();
+
+        for (Method method : methods) {
+            System.out.println("Method: " + method.getName());
+            System.out.println("Parameters: " + method.getParameterCount());
+        }
+
+        Object instance = clazz.getDeclaredConstructor().newInstance();
+        Method greetMethod = clazz.getDeclaredMethod("greet");
+        greetMethod.invoke(instance);
+    }
+}
